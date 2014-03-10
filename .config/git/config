@@ -1,0 +1,5 @@
+[user]
+	email = enki@fsck.pl
+	name = Maciej Grela
+[push]
+	default = simple
