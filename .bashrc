@@ -9,6 +9,8 @@ stty -ixon
 export EDITOR="/usr/bin/emacs"
 export VISUAL="$EDITOR"
 
+export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/share/misc/acronyms"
+
 export STOW_DIR="$HOME/stow"
 stow $(cd $STOW_DIR; echo *)
 
