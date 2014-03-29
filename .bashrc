@@ -28,7 +28,7 @@ screensize() {
 }
 
 # Record a screencast
-alias rec="ffmpeg -f x11grab -s $(screensize 0) -r 25 -i :0.0 -sameq"
+alias rec='ffmpeg -f x11grab -s $(screensize 0) -r 25 -i :0.0 -qscale 0'
 
 # Make josm work under dwm, references:
 # http://awesome.naquadah.org/wiki/Problems_with_Java
