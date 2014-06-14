@@ -29,6 +29,7 @@ screensize() {
 
 # Record a screencast
 alias rec='ffmpeg -f x11grab -s $(screensize 0) -r 25 -i :0.0 -qscale 0'
+alias sht='ffmpeg -f x11grab -s $(screensize 0) -i :0.0 screenshot-$(date -u "+%Y%m%dT%H%M%SZ").png'
 
 # Make josm work under dwm, references:
 # http://awesome.naquadah.org/wiki/Problems_with_Java
@@ -48,3 +49,6 @@ eval $(perl -I${PERL5HOME}/lib/perl5 -Mlocal::lib=${PERL5HOME})
 # Run esekeyd on the laptop built-in keyboard, used for volume control
 KBD_EVENT_DEV=$(for h in /dev/input/event*; do udevadm info --query=all --name=$h | egrep -q "^E: ID_PATH=platform-i8042-serio-0" && echo "$h"; done)
 /usr/sbin/esekeyd $HOME/.esekeyd.conf "$KBD_EVENT_DEV" $XDG_RUNTIME_DIR/esekeyd.pid
+
+# Load private bashrc if provided
+[ -x "$HOME/.bashrc.private" ] && source "$HOME/.bashrc.private"
