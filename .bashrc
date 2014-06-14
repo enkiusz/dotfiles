@@ -44,7 +44,7 @@ export PATH="$HOME/bin:$PATH"
 # Setup perl local::lib
 # http://cpan.uwinnipeg.ca/htdocs/local-lib/local/lib.html
 PERL5HOME="${HOME}/.local/perl5"
-eval $(perl -I${PERL5HOME}/lib/perl5 -Mlocal::lib=${PERL5HOME})
+[ -r "${PERL5HOME}/lib/perl5/local/lib.pm" ] && eval $(perl -I${PERL5HOME}/lib/perl5 -Mlocal::lib=${PERL5HOME})
 
 # Run esekeyd on the laptop built-in keyboard, used for volume control
 KBD_EVENT_DEV=$(for h in /dev/input/event*; do udevadm info --query=all --name=$h | egrep -q "^E: ID_PATH=platform-i8042-serio-0" && echo "$h"; done)
