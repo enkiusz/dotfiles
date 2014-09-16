@@ -17,6 +17,7 @@ stow $(cd $STOW_DIR; echo *)
 alias sel="xclip -selection clipboard -o"
 alias bkg="time nice -n 19 ionice -c 3" # Useful for running daily emerge
 alias reload="source $HOME/.bashrc"
+alias kbugz="bugz --connection kernel"
 
 # Return the size of the specified screen
 # If screen ID is not specified then '0' is assubmed.

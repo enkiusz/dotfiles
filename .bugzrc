@@ -1,6 +1,12 @@
+[kernel]
+base: https://bugzilla.kernel.org/xmlrpc.cgi
+user: enki@fsck.pl
+passwordcmd: /home/enki/.secrets/bugzilla.kernel.org
+
 [gentoo]
 user: thermal@o2.pl
 passwordcmd: /home/enki/.secrets/bugs.gentoo.org
 
 [default]
 connection: gentoo
+
