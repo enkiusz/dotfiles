@@ -2,7 +2,7 @@
 Description=Offlineimap
 
 [Service]
-ExecStart=/usr/bin/offlineimap -u basic
+ExecStart=/usr/bin/offlineimap -u quiet
 Restart=always
 
 [Install]
