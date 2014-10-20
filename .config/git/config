@@ -3,3 +3,5 @@
 	name = Maciej Grela
 [push]
 	default = simple
+[alias]
+	publish = !sh -c \"git-publish-pages $@\"
