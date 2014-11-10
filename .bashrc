@@ -48,8 +48,17 @@ export PATH="$HOME/bin:$PATH"
 PERL5HOME="${HOME}/.local/perl5"
 [ -r "${PERL5HOME}/lib/perl5/local/lib.pm" ] && eval $(perl -I${PERL5HOME}/lib/perl5 -Mlocal::lib=${PERL5HOME})
 
-# Run esekeyd on the laptop built-in keyboard, used for volume control
-KBD_EVENT_DEV=$(for h in /dev/input/event*; do udevadm info --query=all --name=$h | egrep -q "^E: ID_PATH=platform-i8042-serio-0" && echo "$h"; done)
+# Run esekeyd on the main keyboard, used for volume control
+unset KBD_EVENT_DEV
+for h in /dev/input/event*; do 
+    PROPS=$(udevadm info --query=property --name=$h)
+
+    echo -ne "$PROPS" | grep -Fq "ID_INPUT_KEYBOARD=1" || continue # Skip if not a keyboard
+    echo -ne "$PROPS" | grep -Fq "ID_SERIAL=01f3_52c0" || continue
+
+    KBD_EVENT_DEV=$h; break
+done
+
 /usr/sbin/esekeyd $HOME/.esekeyd.conf "$KBD_EVENT_DEV" $XDG_RUNTIME_DIR/esekeyd.pid
 
 # Load private bashrc if provided
