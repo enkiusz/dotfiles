@@ -6,7 +6,14 @@ fi
 # Prevent ^S and ^Q from locking up the display
 stty -ixon
 
-export EDITOR="/usr/bin/emacs"
+# Setup colors for ls
+eval $(dircolors)
+
+# Bash options
+# Reference: http://www.caliban.org/bash/
+export HISTIGNORE="&:mc:mutt:ls"
+
+export EDITOR="/usr/bin/emacsclient"
 export VISUAL="$EDITOR"
 
 export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/share/misc/acronyms"
@@ -19,6 +26,15 @@ alias bkg="time nice -n 19 ionice -c 3" # Useful for running daily emerge
 alias reload="source $HOME/.bashrc"
 alias kbugz="bugz --connection kernel"
 alias burp="java -jar $HOME/bin/burpsuite_free_*.jar &"
+alias pulseloop="pactl load-module module-loopback latency_msec=1"
+alias ls="ls -B --color=auto"
+
+torget() {
+    while [ "$1" ]; do
+	local info_hash="$1"; shift
+	curl https://torcache.net/torrent/$info_hash.torrent | gzip -d > "$info_hash.torrent"
+    done
+}
 
 # Return the size of the specified screen
 # If screen ID is not specified then '0' is assubmed.
