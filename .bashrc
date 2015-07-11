@@ -19,7 +19,7 @@ export VISUAL="$EDITOR"
 export ACRONYMDB="/usr/share/misc/acronyms /usr/share/misc/acronyms.comp $HOME/share/misc/acronyms"
 
 export STOW_DIR="$HOME/stow"
-stow $(cd $STOW_DIR; echo *)
+stow --ignore="^README.md$" $(cd $STOW_DIR; echo *)
 
 alias sel="xclip -selection clipboard -o"
 alias bkg="time nice -n 19 ionice -c 3" # Useful for running daily emerge
