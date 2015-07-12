@@ -49,11 +49,6 @@ screensize() {
 alias rec='ffmpeg -f x11grab -s $(screensize 0) -r 25 -i :0.0 -qscale 0'
 alias sht='ffmpeg -f x11grab -s $(screensize 0) -i :0.0 screenshot-$(date -u "+%Y%m%dT%H%M%SZ").png'
 
-# Make josm work under dwm, references:
-# http://awesome.naquadah.org/wiki/Problems_with_Java
-# https://wiki.archlinux.org/index.php/Java
-wmname LG3D
-
 xdg-user-dirs-update
 [ -r ${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs ] && source ${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs
 
