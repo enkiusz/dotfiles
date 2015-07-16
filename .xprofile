@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export XSESSION=i3wm
+
+xscreensaver -no-splash &
+$HOME/bin/xrandr-desktop
+xscreensaver-command -watch | $HOME/bin/watch-xss-status &
+xscreensaver-command -lock
