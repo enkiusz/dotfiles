@@ -58,8 +58,6 @@ alias sht='ffmpeg -f x11grab -s $(screensize 0) -i :0.0 screenshot-$(date -u "+%
 xdg-user-dirs-update
 [ -r ${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs ] && source ${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs
 
-export PATH="$HOME/bin:$PATH"
-
 # Setup perl local::lib
 # http://cpan.uwinnipeg.ca/htdocs/local-lib/local/lib.html
 PERL5HOME="${HOME}/.local/perl5"
@@ -80,3 +78,4 @@ done
 
 # Load private bashrc if provided
 [ -x "$HOME/.bashrc.private" ] && source "$HOME/.bashrc.private"
+
