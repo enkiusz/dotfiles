@@ -6,3 +6,6 @@ xscreensaver -no-splash &
 $HOME/bin/xrandr-desktop
 xscreensaver-command -watch | $HOME/bin/watch-xss-status &
 xscreensaver-command -lock
+
+# LOCATION_* variables come from .bashrc.private
+[ -x $(which redshift) ] && redshift -l $LOCATION_LAT:$LOCATION_LON &
