@@ -2,7 +2,7 @@
 Description=Offlineimap
 
 [Service]
-ExecStart=/usr/bin/offlineimap -u quiet
+ExecStart=/usr/bin/proxychains -q /usr/bin/offlineimap -u quiet
 Restart=always
 
 [Install]

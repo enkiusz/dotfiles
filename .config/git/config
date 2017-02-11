@@ -5,3 +5,7 @@
 	default = simple
 [alias]
 	publish = !sh -c \"git-publish-pages $@\"
+[color]
+	ui = auto
+[http]
+	proxy = socks5://127.0.0.1:9050
