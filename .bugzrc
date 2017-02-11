@@ -4,6 +4,7 @@ user: enki@fsck.pl
 passwordcmd: /home/enki/.secrets/bugzilla.kernel.org
 
 [gentoo]
+base: https://bugs.gentoo.org/xmlrpc.cgi
 user: thermal@o2.pl
 passwordcmd: /home/enki/.secrets/bugs.gentoo.org
 
