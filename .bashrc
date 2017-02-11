@@ -3,6 +3,8 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
+export PATH="$HOME/bin:$PATH"
+
 # Prevent ^S and ^Q from locking up the display
 stty -ixon
 
@@ -64,18 +66,25 @@ PERL5HOME="${HOME}/.local/perl5"
 [ -r "${PERL5HOME}/lib/perl5/local/lib.pm" ] && eval $(perl -I${PERL5HOME}/lib/perl5 -Mlocal::lib=${PERL5HOME})
 
 # Run esekeyd on the main keyboard, used for volume control
-unset KBD_EVENT_DEV
-for h in /dev/input/event*; do 
-    PROPS=$(udevadm info --query=property --name=$h)
+if [ -x "$(which esekeyd 2>/dev/null)" ]; then
+    unset KBD_EVENT_DEV
+    for h in /dev/input/event*; do 
+        PROPS=$(udevadm info --query=property --name=$h)
 
-    echo -ne "$PROPS" | grep -Fq "ID_INPUT_KEYBOARD=1" || continue # Skip if not a keyboard
-    echo -ne "$PROPS" | grep -Fq "ID_SERIAL=01f3_52c0" || continue
+        echo -ne "$PROPS" | grep -Fq "ID_INPUT_KEYBOARD=1" || continue # Skip if not a keyboard
+        echo -ne "$PROPS" | grep -Fq "ID_SERIAL=01f3_52c0" || continue
 
-    KBD_EVENT_DEV=$h; break
-done
+        KBD_EVENT_DEV=$h; break
+    done
 
-/usr/sbin/esekeyd $HOME/.esekeyd.conf "$KBD_EVENT_DEV" $XDG_RUNTIME_DIR/esekeyd.pid
+    /usr/sbin/esekeyd $HOME/.esekeyd.conf "$KBD_EVENT_DEV" $XDG_RUNTIME_DIR/esekeyd.pid
+fi
 
 # Load private bashrc if provided
 [ -x "$HOME/.bashrc.private" ] && source "$HOME/.bashrc.private"
+
+# Load additional profile scripts
+for s in $HOME/.config/bash/profile.d/*.bash; do
+    [ -x "$s" ] && source "$s"
+done
 
