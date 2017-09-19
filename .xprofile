@@ -3,9 +3,10 @@
 export XSESSION=i3wm
 
 xscreensaver -no-splash &
-$HOME/bin/xrandr-desktop
-xscreensaver-command -watch | $HOME/bin/watch-xss-status &
+xscreensaver-command -watch | $HOME/.local/bin/watch-xss-status &
 xscreensaver-command -lock
 
-# LOCATION_* variables come from .bashrc.private
+# LOCATION_* variables come from private .oh-my-zsh/custom includes
 [ -x $(which redshift) ] && redshift -l $LOCATION_LAT:$LOCATION_LON &
+
+setxkbmap -layout pl -option caps:ctrl_modifier
