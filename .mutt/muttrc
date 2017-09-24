@@ -1,0 +1,11 @@
+source ~/.mutt/sort-threads.rc
+
+set display_filter="~/.mutt/X-Time-Since.sh"
+# Ignore all headers by default
+ignore *
+unignore from date subject to cc organization organisation X-Time-Since posted-to
+
+set folder="$MAILDIR"
+mailboxes `find $MAILDIR -type d -name cur -printf '"%h"\n' | grep -vF -e 'Spam' -e 'Kosz' -e 'Trash' -e 'Śmietnik' | while read f; do echo ${f/$MAILDIR/=}; done | tr "\n" " "`
+
+source ~/.mutt/muttrc.private
