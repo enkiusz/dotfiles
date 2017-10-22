@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Path is needed by xinit for i3 to have the proper path and be able
+# to launch localy installed binaries (like firefox-nightly)
+export PATH="$HOME/.local/bin:$PATH"
+
 export XSESSION=i3wm
 
 xscreensaver -no-splash &
