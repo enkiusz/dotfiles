@@ -1,1 +1,3 @@
 encryption=require
+dht=auto
+
