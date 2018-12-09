@@ -14,3 +14,6 @@ xscreensaver-command -lock
 [ -x $(which redshift) ] && redshift -l $LOCATION_LAT:$LOCATION_LON &
 
 setxkbmap -layout pl -option caps:ctrl_modifier
+
+xrandr --setprovideroutputsource 1 0
+xrandr --output DVI-1-0 --auto --left-of DVI-1
