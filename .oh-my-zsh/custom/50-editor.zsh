@@ -1,4 +1,4 @@
-readonly EDITOR="/usr/bin/emacsclient"
+readonly EDITOR=$(which emacsclient)
 readonly VISUAL="$EDITOR"
 export EDITOR VISUAL
 
