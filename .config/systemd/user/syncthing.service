@@ -2,7 +2,7 @@
 Description=Syncthing
 
 [Service]
-ExecStart=/usr/bin/syncthing -no-browser
+ExecStart=/usr/bin/env syncthing -no-browser
 Restart=always
 
 [Install]
