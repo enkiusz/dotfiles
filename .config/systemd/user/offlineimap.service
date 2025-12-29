@@ -1,9 +1,0 @@
-[Unit]
-Description=Offlineimap
-
-[Service]
-ExecStart=/usr/bin/offlineimap -u quiet
-Restart=always
-
-[Install]
-WantedBy=default.target

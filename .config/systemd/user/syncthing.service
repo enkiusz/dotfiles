@@ -1,9 +1,0 @@
-[Unit]
-Description=Syncthing
-
-[Service]
-ExecStart=/usr/bin/env syncthing -no-browser
-Restart=always
-
-[Install]
-WantedBy=default.target

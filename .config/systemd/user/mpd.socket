@@ -1,8 +1,0 @@
-[Unit]
-Description=Music Player Daemon Socket
-
-[Socket]
-ListenStream=127.0.0.1:6600
-
-[Install]
-WantedBy=default.target

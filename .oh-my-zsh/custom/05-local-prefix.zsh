@@ -1,2 +1,0 @@
-export LOCALROOT="$HOME/.local"
-
