@@ -1,0 +1,2 @@
+# access shared Node modules
+export NODE_PATH=$HOME/.local/lib/node_modules
